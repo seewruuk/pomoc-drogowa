@@ -3,7 +3,7 @@ import ClockIcon from "../assets/icons/clock.svg";
 import PhoneIcon from "../assets/icons/phone.svg";
 import GroupIcon from "../assets/icons/group.svg";
 import Image from "next/image";
-import {StateContext} from "@/context/StateContext";
+import {StateContext} from "../context/StateContext";
 import {useContext} from "react";
 
 

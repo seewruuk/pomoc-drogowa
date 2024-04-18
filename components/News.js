@@ -1,6 +1,6 @@
 "use client"
-import {Label} from "@/components/index";
-import {StateContext} from "@/context/StateContext";
+import {Label} from "../components/index";
+import {StateContext} from "../context/StateContext";
 import {useContext} from "react";
 import Link from "next/link";
 

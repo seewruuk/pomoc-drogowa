@@ -1,7 +1,7 @@
 "use client"
 import {useContext} from "react";
-import {StateContext} from "@/context/StateContext";
-import {Label} from "@/components/index";
+import {StateContext} from "../context/StateContext";
+import {Label} from "../components/index";
 import {data} from "autoprefixer";
 
 export default function Review() {
