@@ -8,9 +8,10 @@ import ServiceCard from "@/components/services/ServiceCard";
 import Gallery from "@/components/common/Gallery";
 import Review from "@/components/Review";
 import Faq from "@/components/common/Faq";
-import News from "@/components/News";
+import News from "@/components/news/News";
+import NewsComponent from "@/components/news/NewsComponent";
 import Separator from "@/components/common/Separator";
-
+import OfferHero from "@/components/&offer/Hero";
 
 
 export {
@@ -25,5 +26,8 @@ export {
     Review,
     Faq,
     News,
-    Separator
+    NewsComponent,
+    Separator,
+
+    OfferHero,
 };

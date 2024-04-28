@@ -1,15 +1,18 @@
 "use client"
-import {Label} from "../components/index";
-import {StateContext} from "../context/StateContext";
+import {Label} from "../index";
+import {StateContext} from "../../context/StateContext";
 import {useContext} from "react";
 import Link from "next/link";
 
 
 const NewsCard = ({...props}) => {
 
-    const {title, slug, date, image} = props.data;
-
+    const {title, slug, image, imageAlt, date} = props.data;
     const {theme} = useContext(StateContext);
+
+    let customDate = new Date(date);
+    customDate = customDate.toLocaleDateString();
+
     const styles = {
         violet: "bg-violet text-white",
         yellow: "bg-yellow text-black",
@@ -17,9 +20,9 @@ const NewsCard = ({...props}) => {
 
     return (
         <Link href={`/aktualtnosci/${slug}`} className={"relative max-lg:my-6"}>
-            <img src={image} alt={"news"} className={"w-full h-[300px] object-cover rounded-2xl"}/>
+            <img src={image} alt={`${imageAlt}`} className={"w-full h-[300px] object-cover rounded-2xl"}/>
             <div className={"mt-[32px]"}>
-                <Label text={date} />
+                <Label text={customDate} />
                 <h3 className={"mt-[18px]"}>{title}</h3>
             </div>
         </Link>
@@ -27,31 +30,7 @@ const NewsCard = ({...props}) => {
 }
 
 
-export default function News() {
-
-
-    const data = [
-        {
-            title: "Nowa usługa w naszej ofercie!",
-            slug: "nowa-usluga-w-naszej-ofercie",
-            date: "12.05.2021",
-            image: "https://images.pexels.com/photos/912843/pexels-photo-912843.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-
-
-        },
-        {
-            title: "Zmiana godzin otwarcia",
-            slug: "zmiana-godzin-otwarcia",
-            date: "12.05.2021",
-            image: "https://images.pexels.com/photos/761820/pexels-photo-761820.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        },
-        {
-            title: "Zmiana w cenniku",
-            slug: "zmiana-w-cenniku",
-            date: "12.05.2021",
-            image: "https://images.pexels.com/photos/276334/pexels-photo-276334.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        }
-    ]
+export default function News({data}) {
 
 
     return (
@@ -63,7 +42,7 @@ export default function News() {
                 </div>
                 <div className={"flex justify-between gap-4 max-lg:flex-col"}>
                     {
-                        data.map((item, index) => {
+                        data && data.map((item, index) => {
                             return (
                                 <NewsCard key={index} data={item}/>
                             )

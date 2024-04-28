@@ -1,6 +1,7 @@
 import {Outfit} from "next/font/google";
 import "./globals.scss";
 import StateContextProvider from "@/context/StateContext";
+import MenuLayout from "@/components/common/Menu/_MenuLayout";
 
 const inter = Outfit({subsets: ["latin"]});
 
@@ -14,6 +15,7 @@ export default function RootLayout({children}) {
         <html lang="pl">
         <body className={`${inter.className} relative`}>
         <StateContextProvider>
+            <MenuLayout/>
             {children}
         </StateContextProvider>
         </body>

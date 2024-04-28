@@ -3,11 +3,15 @@
 @tailwind utilities;
 
 
-//*{
-//  box-sizing: border-box;
-//  margin: 0;
-//  padding: 0;
-//}
+@layer components {
+  .menu-link-yellow {
+    @apply text-white hover:text-yellow transition-all;
+  }
+  .menu-link-violet {
+    @apply text-white hover:text-violet transition-all;
+  }
+}
+
 
 body{
   height: 100%;
@@ -37,7 +41,7 @@ h3{
 
 p{
   font-weight: 400;
-  font-size: 21px;
+  font-size: 18px;
   line-height: 28px;
 }
 p.small{
@@ -53,4 +57,8 @@ p.small{
 .stack-item{
   grid-column: 1/1;
   grid-row: 1/1;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }

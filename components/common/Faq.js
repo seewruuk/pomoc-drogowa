@@ -32,26 +32,7 @@ function Card({...props}) {
 }
 
 
-export default function Faq() {
-
-    const data = [
-        {
-            question : "Jak szybko możecie dotrzeć na miejsce zdarzenia?",
-            answer: "Nasz czas reakcji to zazwyczaj 15-30 minut w granicach Trójmiasta, jednak może się on zmieniać w zależności od warunków drogowych i odległości."
-        },
-        {
-            question : "Czy mogę liczyć na pomoc drogową poza granicami Trójmiasta?",
-            answer: "Tak, oferujemy pomoc drogową również poza Trójmiastem. Skontaktuj się z nami, aby uzyskać szczegółową wycenę i czas dojazdu."
-        },
-        {
-            question : "Czy świadczycie usługi dla motocykli?",
-            answer: "Tak, nasza oferta obejmuje również pomoc drogową dla motocyklistów. Bez względu na typ pojazdu, jesteśmy gotowi Ci pomóc."
-        },
-        {
-            question : "Jak szybko możecie dotrzeć na miejsce zdarzenia?",
-            answer: "Nasz czas reakcji to zazwyczaj 15-30 minut w granicach Trójmiasta, jednak może się on zmieniać w zależności od warunków drogowych i odległości."
-        }
-    ]
+export default function Faq({data}) {
 
 
     return (

@@ -3,17 +3,9 @@ import {useContext} from "react";
 import {StateContext} from "@/context/StateContext";
 import Image from "next/image";
 
-export default function Gallery() {
+export default function Gallery({images}) {
 
 
-    const images = [
-        "https://images.pexels.com/photos/912843/pexels-photo-912843.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "https://images.pexels.com/photos/761820/pexels-photo-761820.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "https://images.pexels.com/photos/276334/pexels-photo-276334.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "https://images.pexels.com/photos/912843/pexels-photo-912843.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "https://images.pexels.com/photos/761820/pexels-photo-761820.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "https://images.pexels.com/photos/276334/pexels-photo-276334.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    ]
 
     const {theme} = useContext(StateContext);
 
@@ -29,7 +21,7 @@ export default function Gallery() {
                     images.map((item, index) => {
                         return (
                             <Image src={item} alt={"image"} height={410} width={550} key={index}
-                                   className={`border-2 rounded-lg w-full h-full ${styles[theme]}`}
+                                   className={`border-2 rounded-lg w-full h-[350px] ${styles[theme]}`}
                                    style={{
                                        objectFit: "cover",
                                        objectPosition: "center"

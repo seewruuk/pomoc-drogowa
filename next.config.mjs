@@ -8,8 +8,16 @@ const nextConfig = {
                 port: '',
                 pathname: '/photos/**',
             },
+            {
+                protocol: 'https',
+                hostname: 'cdn.sanity.io',
+                port: '',
+            },
+
         ],
     },
+    reactStrictMode: false,
+    trailingSlash: true,
 };
 
 export default nextConfig;
