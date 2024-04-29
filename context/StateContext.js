@@ -42,7 +42,7 @@ export default function StateContextProvider({children}) {
     const currentWidth = width;
 
     const [displayVersion, setDisplayVersion] = useState("desktop");
-    const isMobile = width <= 768;
+    const isMobile = width <= 975;
 
     useEffect(() => {
         if (isMobile) {

@@ -5,7 +5,8 @@ import {StateContext} from "@/context/StateContext";
 import ContactIcon from "@/assets/icons/contact.svg"
 import ClockIcon from "@/assets/icons/clock.svg"
 import GroupIcon from "@/assets/icons/group.svg"
-import PhoneIcon from "@/assets/icons/phone.svg"
+import PhoneIcon from "@/assets/icons/phone2.svg"
+import EmailIcon from "@/assets/icons/email.svg"
 
 const buttonStyles = {
     yellow: "bg-yellow text-black hover:bg-[#FF9900]",
@@ -17,6 +18,7 @@ const iconTypes = {
     clock: ClockIcon,
     group: GroupIcon,
     phone: PhoneIcon,
+    email: EmailIcon
 }
 
 const iconStyles = {
@@ -36,7 +38,9 @@ export default function Button({text, icon, target, type }) {
     return (
         <button className={buttonClass}>
             <span>
-                <Image src={iconTypes[type]} alt="icon" width={24} height={24} style={iconFilter} />
+                <Image src={iconTypes[type]} alt="icon" width={
+                    type === "phone" ? 16 : 24
+                } height={24} style={iconFilter} />
             </span>
             <span>
                 {text}

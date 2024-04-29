@@ -4,6 +4,7 @@ import {getSingleOffer} from "@/sanity/lib/sanity-utils";
 import {Faq, Gallery, OfferHero, Separator, Services} from "@/components";
 import Advantages from "@/components/&offer/Advantages";
 import HowWeWork from "@/components/&offer/HowWeWork";
+import Loader from "@/components/common/Loader";
 
 export default function OfferLayout({slug}) {
 
@@ -25,33 +26,35 @@ export default function OfferLayout({slug}) {
         }
         setIsLoading(false)
 
-    }, []);
-
-    console.log("data", data)
+    }, [slug, isLoading]);
 
 
-    return (
-        <div className={"relative"}>
-            {
-                data && (
-                    <>
-                        <OfferHero data={data}/>
-                        <Advantages data={data}/>
-                        <HowWeWork data={data}/>
-                        {
-                            data.services && data.service_header && (
-                                <Services data={data.services} header={data.service_header}/>
-                            )
-                        }
-                        <Gallery images={data.gallery}/>
-                        <Faq data={data.faq}/>
-                        <Separator/>
+    if(isLoading) {
+        return <Loader />
+    }else{
+        return (
+            <div className={"relative"}>
+                {
+                    data && (
+                        <>
+                            <OfferHero data={data}/>
+                            <Advantages data={data}/>
+                            <HowWeWork data={data}/>
+                            {
+                                data.services && data.service_header && (
+                                    <Services data={data.services} header={data.service_header}/>
+                                )
+                            }
+                            <Gallery images={data.gallery}/>
+                            <Faq data={data.faq}/>
+                            <Separator/>
 
-                    </>
+                        </>
 
-                )
-            }
+                    )
+                }
 
-        </div>
-    )
+            </div>
+        )
+    }
 }

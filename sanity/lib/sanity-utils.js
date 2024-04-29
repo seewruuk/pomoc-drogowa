@@ -43,3 +43,19 @@ export async function getSingleOffer(slug) {
         {slug}
     )
 }
+
+export async function getSingleArticle(slug){
+    return client.fetch(
+        groq`*[_type == "news" && slug.current == "${slug}"] {
+            title,
+            "slug": slug.current,
+            "image": image.asset->url,
+            imageAlt,
+            date,
+            content,
+            seo,
+            description,
+        }[0]`,
+        {slug}
+    )
+}

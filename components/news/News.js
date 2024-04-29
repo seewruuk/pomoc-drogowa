@@ -19,7 +19,7 @@ const NewsCard = ({...props}) => {
     }
 
     return (
-        <Link href={`/aktualtnosci/${slug}`} className={"relative max-lg:my-6"}>
+        <Link href={`/aktualnosci/${slug}`} className={"relative max-lg:my-6"}>
             <img src={image} alt={`${imageAlt}`} className={"w-full h-[300px] object-cover rounded-2xl"}/>
             <div className={"mt-[32px]"}>
                 <Label text={customDate} />

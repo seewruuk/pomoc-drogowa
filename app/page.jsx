@@ -11,32 +11,32 @@ export default function Home() {
 
     const services = [
         {
-            icon: Icon1,
+            icon: Icon4,
             title: "Holowanie",
             desc: "Nie ważne, gdzie jesteś – nasze holowniki są gotowe, aby szybko i bezpiecznie dostarczyć Twój pojazd do wybranego miejsca."
         },
         {
-            icon: Icon2,
+            icon: Icon5,
             title: "Awaryjne Odpalanie",
             desc: "Rozładowana bateria nie jest już problemem. Nasz zespół szybko przywróci życie Twojemu samochodowi, umożliwiając Ci bezpieczny powrót do domu."
         },
         {
-            icon: Icon3,
+            icon: Icon1,
             title: "Wymiana Koła",
             desc: "Przebita opona? Nie martw się, wymienimy ją na miejscu, abyś mógł kontynuować podróż bez zbędnej zwłoki."
         },
         {
-            icon: Icon4,
+            icon: Icon2,
             title: "Transport maszyn budowlanych",
             desc: "Koparki, walce, żurawie i inne."
         },
         {
-            icon: Icon5,
+            icon: Icon6,
             title: "Transport maszyn rolniczych",
             desc: "Traktory, kombajny, opryskiwacze i inne."
         },
         {
-            icon: Icon6,
+            icon: Icon3,
             title: "Transport urządzeń przemysłowych",
             desc: "Maszyny produkcyjne, generatory, urządzenia specjalistyczne i inne."
         }

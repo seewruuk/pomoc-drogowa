@@ -73,7 +73,7 @@ export default function DesktopMenu() {
                     </li>
 
                     <li className={"group relative"}>
-                        <Link href={"#oferta"} className={`${styles[theme]}`}>Oferta</Link>
+                        <Link href={"#uslugi"} className={`${styles[theme]}`}>Usługi</Link>
                         <ul className={"hidden group-hover:visible absolute w-[250px] h-[95px] bg-white text-black top-[100%] rounded-2xl group-hover:flex flex-col gap-3 pl-6 justify-center opacity-0 group-hover:opacity-100 transition-all"}>
                             <li>
                                 <Link href={"/uslugi/pomoc-drogowa"}
@@ -93,7 +93,7 @@ export default function DesktopMenu() {
                         <Link href={"/#opinie"} className={`${styles[theme]}`}>Opinie</Link>
                     </li>
                     <li>
-                        <Link href={"/#faq"} className={`${styles[theme]}`}>Faq</Link>
+                        <Link href={"/#faq"} className={`${styles[theme]}`}>FAQ</Link>
                     </li>
                     <li>
                         <Link href={"#kontakt"} className={`${styles[theme]}`}>Kontakt</Link>

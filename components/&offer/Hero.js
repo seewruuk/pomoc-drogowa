@@ -8,6 +8,6 @@ export default function OfferHero({data}) {
 
 
     return (
-       <LowHero text={"Oferta"} category={cat} title={header} desc={header_desc} />
+       <LowHero text={"Usługi"} category={cat} title={header} desc={header_desc} />
     )
 }
