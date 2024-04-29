@@ -15,9 +15,22 @@ const nextConfig = {
             },
 
         ],
+
+
     },
     reactStrictMode: false,
     trailingSlash: true,
+
+
+    async redirects() {
+        return [
+            {
+                source: '/oferta',
+                destination: '/',
+                permanent: true,
+            },
+        ]
+    }
 };
 
 export default nextConfig;

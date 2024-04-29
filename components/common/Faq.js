@@ -36,7 +36,7 @@ export default function Faq({data}) {
 
 
     return (
-        <section className={"max-w-[1420px] mx-auto px-12 max-md:px-6 py-[75px]"}>
+        <section className={"max-w-[1420px] mx-auto px-12 max-md:px-6 py-[75px] "} id={"faq"}>
             <div className={"w-full flex flex-col"}>
 
                 <div className={"flex items-center flex-col text-center max-w-[600px] mx-auto mb-[72px]"}>

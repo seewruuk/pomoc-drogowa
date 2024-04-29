@@ -29,7 +29,7 @@ export default function Review() {
     ]
 
     return (
-        <section className={`${styles[theme]}`}>
+        <section className={`${styles[theme]}`} id={"opinie"}>
             <div className={"max-w-[1420px] mx-auto px-12 max-md:px-6 py-[75px]"}>
                 <div className={"mb-[42px] flex flex-col justify-center items-center text-center"}>
                     <Label text={"Opinie"} type={"black"}/>

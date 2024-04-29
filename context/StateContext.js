@@ -2,12 +2,17 @@
 
 import {createContext, useState, useEffect} from 'react'
 import {getThreeLatestPosts} from "@/sanity/lib/sanity-utils";
+import {getCookie, setCookie} from 'cookies-next';
 
 export const StateContext = createContext({});
 
 
 export default function StateContextProvider({children}) {
-    const [theme, setTheme] = useState('yellow');
+    const [theme, setTheme] = useState(
+        "yellow"
+    );
+
+
     const [news, setNews] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 

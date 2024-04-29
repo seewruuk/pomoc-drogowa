@@ -10,6 +10,16 @@
   .menu-link-violet {
     @apply text-white hover:text-violet transition-all;
   }
+  .menu-social-yellow {
+    @apply aspect-square border-2 border-white rounded-full grid place-items-center w-[40px] h-[40px] bg-transparent hover:bg-black hover:bg-opacity-60 transition-all hover:border-yellow;
+  }
+  .menu-social-violet {
+    @apply aspect-square border-2 border-white rounded-full grid place-items-center w-[40px] h-[40px] bg-transparent hover:bg-black hover:bg-opacity-60 transition-all hover:border-violet;
+  }
+
+  .menu-social-changeColor {
+    @apply aspect-square border-2 border-white rounded-full grid place-items-center w-[40px] h-[40px];
+  }
 }
 
 
@@ -17,6 +27,11 @@ body{
   height: 100%;
   width: 100vw;
   overflow-x: hidden;
+}
+
+*{
+  scroll-behavior: smooth;
+
 }
 
 h1{

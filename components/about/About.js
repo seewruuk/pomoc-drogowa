@@ -13,7 +13,7 @@ export default function About() {
     const [selectedImage, setSelectedImage] = useState(0)
 
     return (
-        <section className={"max-w-[1420px] mx-auto px-12 py-[150px] max-md:px-6"}>
+        <section className={"max-w-[1420px] mx-auto px-12 py-[150px] max-md:px-6"} id={"o-nas"}>
             <div className={"flex justify-between gap-[50px] items-center max-lg:flex-col"}>
 
                 <div className={"w-[50%] flex flex-col gap-4 items-start max-lg:w-[100%]"}>

@@ -27,18 +27,24 @@ export default function OfferLayout({slug}) {
 
     }, []);
 
+    console.log("data", data)
+
 
     return (
         <div className={"relative"}>
             {
                 data && (
                     <>
-                        <OfferHero data={data} />
-                        <Advantages data={data} />
-                        <HowWeWork data={data} />
-                        <Services data={data.services} header={data.service_header} />
-                        <Gallery images={data.gallery} />
-                        <Faq data={data.faq} />
+                        <OfferHero data={data}/>
+                        <Advantages data={data}/>
+                        <HowWeWork data={data}/>
+                        {
+                            data.services && data.service_header && (
+                                <Services data={data.services} header={data.service_header}/>
+                            )
+                        }
+                        <Gallery images={data.gallery}/>
+                        <Faq data={data.faq}/>
                         <Separator/>
 
                     </>
