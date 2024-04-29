@@ -8,7 +8,10 @@ export default function Separator() {
                 <div className={"max-md:flex max-md:flex-col max-md:items-center max-md:text-center"}>
                     <h2>Potrzebujesz pomocy?</h2>
                     <p className={"mb-[24px]"}>Nie zwlekaj, skontatkuj się z nami!</p>
-                    <Button text={"Skontakuj się"} type={"cta"}/>
+                    <Button text={"Skontakuj się"}
+                            target={"#kontakt"}
+                            type={"cta"}
+                    />
                 </div>
             </section>
 

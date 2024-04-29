@@ -14,7 +14,7 @@ const buttonStyles = {
     // white: "bg-white text-black hover:bg-[#000]"
 };
 const iconTypes = {
-    cta : ContactIcon,
+    cta: ContactIcon,
     clock: ClockIcon,
     group: GroupIcon,
     phone: PhoneIcon,
@@ -27,7 +27,7 @@ const iconStyles = {
     }
 };
 
-export default function Button({text, icon, target, type }) {
+export default function Button({text, icon, target, type}) {
 
     const {theme} = useContext(StateContext);
 
@@ -36,15 +36,30 @@ export default function Button({text, icon, target, type }) {
     const iconFilter = iconStyles[theme] || {};
 
     return (
-        <button className={buttonClass}>
-            <span>
-                <Image src={iconTypes[type]} alt="icon" width={
-                    type === "phone" ? 16 : 24
-                } height={24} style={iconFilter} />
-            </span>
+        <button className={buttonClass}
+                onClick={() => {
+                    if (target) {
+                        const el = document.querySelector(target);
+                        el.scrollIntoView({behavior: "smooth"});
+                    }
+                    if (type === "email") {
+                        window.open("mailto:test@wp.pl");
+                    }
+                    if (type === "phone") {
+                        window.open("tel:123456789");
+                    }
+                }
+                }
+        >
+                    <span>
+                    <Image src={iconTypes[type]} alt="icon" width={
+                        type === "phone" ? 16 : 24
+                    } height={24} style={iconFilter}/>
+                    </span>
             <span>
                 {text}
-            </span>
+</span>
         </button>
-    );
+    )
+        ;
 }

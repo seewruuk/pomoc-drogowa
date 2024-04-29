@@ -23,7 +23,10 @@ export default function About() {
                         zespół składa się z doświadczonych profesjonalistów, którzy są wyposażeni w najnowocześniejszy
                         sprzęt, aby zapewnić Ci najlepsze możliwe rozwiązanie problemu. Twoje bezpieczeństwo i
                         zadowolenie są dla nas priorytetem.</p>
-                    <Button text={"Skontaktuj się"} type={"cta"}/>
+                    <Button text={"Skontaktuj się"}
+                            target={"#kontakt"}
+                            type={"cta"}
+                    />
                 </div>
 
                 <div className={"w-[50%] flex flex-col max-lg:w-[100%]"}>

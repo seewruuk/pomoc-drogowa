@@ -81,30 +81,12 @@ export default function Hero() {
                         }
 
 
-                        {
-                            heroElements && heroElements.map((item, index) => {
-                                if (index !== selectedIndex) return null;
-
-                                return (
-                                    <AnimatePresence key={item + index}>
-                                        <motion.div
-                                            initial={{opacity: 0}}
-                                            animate={{opacity: 1}}
-                                            exit={{opacity: 0}}
-                                        >
-                                            <Button
-                                                text={`${
-                                                    item?.button_text
-                                                }`}
-                                                icon={ContactIcon}
-                                                target={"#kontakt"}
-                                                type={"cta"}
-                                            />
-                                        </motion.div>
-                                    </AnimatePresence>
-                                )
-                            })
-                        }
+                        <Button
+                            text={`Skontaktuj się`}
+                            icon={ContactIcon}
+                            target={"#kontakt"}
+                            type={"cta"}
+                        />
 
 
                         <p className={"text-white text-[12px] flex gap-4  mt-[24px]"}>

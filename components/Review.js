@@ -18,13 +18,13 @@ export default function Review() {
             user: "Jakub",
             city: "Gdynia",
             text: "Kiedy moje auto odmówiło posłuszeństwa w środku nocy, Pomoc Drogowa była moją deską ratunku. Przybyli błyskawicznie i profesjonalnie zajęli się problemem. Niezmiernie jestem wdzięczny za ich pomoc!",
-            date: "12.05.2021"
+            date: "12.04.2024"
         },
         {
             user: "Katarzyna",
             city: "Gdańsk",
             text: "Dziękuję za szybką reakcję i pomoc w trudnej sytuacji. Wszystko odbyło się sprawnie i bezproblemowo. Polecam!",
-            date: "02.04.2021"
+            date: "02.01.2024"
         }
     ]
 
