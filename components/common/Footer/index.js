@@ -46,11 +46,11 @@ export const footerData = [
         links: [
             {
                 label: "Facebook",
-                href: "https://www.facebook.com/"
+                href: "https://www.facebook.com/sliwinski.pomoc.drogowa/"
             },
             {
                 label: "Instagram",
-                href: "https://www.facebook.com/"
+                href: "https://www.facebook.com/sliwinski.pomoc.drogowa/"
             },
         ]
     },

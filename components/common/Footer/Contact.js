@@ -14,11 +14,12 @@ export default function Contact() {
                 <h2>Gotowi pomóc - skontaktuj się z nami!</h2>
                 <p>
                     Potrzebujesz szybkiej pomocy drogowej?
-                    Skorzystaj z poniższego formularza kontaktowego lub zadzwoń bezpośrednio. Nasz zespół jest do Twojej
+                    <br/>
+                    Zadzwoń bezpośrednio - nasz zespół jest do Twojej
                     dyspozycji 24/7.
                 </p>
                 <div className={"flex flex-col gap-3 items-start mt-[42px]"}>
-                    <Button text={"Zadzwoń / +48 123 123 123"} type={"phone"} />
+                    <Button text={"Zadzwoń / +48 123 123 123"} type={"phone"}/>
                     <Button text={"Napisz wiadomość / test@wp.pl"} type={"email"}/>
                 </div>
 

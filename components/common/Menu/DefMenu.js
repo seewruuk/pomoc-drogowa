@@ -6,10 +6,12 @@ import Image from "next/image";
 import Link from "next/link";
 import {StateContext} from "@/context/StateContext";
 import {useContext, useEffect, useState} from "react";
+import {motion, AnimatePresence} from "framer-motion";
 
 export default function DesktopMenu() {
 
     const {theme, setTheme} = useContext(StateContext);
+    const [showSubMenu, setShowSubMenu] = useState(false);
 
     const styles = {
         yellow: "menu-link-yellow group-hover:text-yellow",
@@ -101,12 +103,12 @@ export default function DesktopMenu() {
                 </ul>
 
                 <div className={"flex gap-4 items-center h-max"}>
-                    <Link href={"/"}
+                    <Link href={"https://www.facebook.com/sliwinski.pomoc.drogowa/"} target={"_blank"}
                           className={`${socialStyles[theme]}`}>
                         <Image src={FacebookIcon} alt={"Facebook Icon"} width={9} height={17}/>
                     </Link>
 
-                    <Link href={"/"}
+                    <Link href={"https://www.facebook.com/sliwinski.pomoc.drogowa/"} target={"_blank"}
                           className={`${socialStyles[theme]}`}>
                         <Image src={InstagramIcon} alt={"Instagram Icon"} width={16} height={16}/>
                     </Link>

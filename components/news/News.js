@@ -35,7 +35,6 @@ export default function News({data}) {
 
     return (
         <section className={"max-w-[1420px] mx-auto px-12 py-[75px] max-md:px-0"}>
-            <div className={"max-w-[1420px] mx-auto px-12 max-md:px-6 py-[75px]"}>
                 <div className={"mb-[42px] flex flex-col justify-center items-center text-center"}>
                     <Label text={"Aktualności"}/>
                     <h2>Bądź na bieżąco!</h2>
@@ -49,7 +48,6 @@ export default function News({data}) {
                         })
                     }
                 </div>
-            </div>
         </section>
     )
 }

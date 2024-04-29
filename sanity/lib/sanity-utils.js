@@ -19,6 +19,19 @@ export async function getThreeLatestPosts() {
     )
 }
 
+export async function getHeroElements(){
+    return client.fetch(
+        groq`*[_type == "hero"]{
+            "image": image.asset->url,
+            imageAlt,
+            header,
+            desc,
+            button_text,
+            button_url,
+        }`
+    )
+}
+
 export async function getSingleOffer(slug) {
     return client.fetch(
         groq`*[_type == "offer" && slug.current == "${slug}"] {
@@ -26,7 +39,7 @@ export async function getSingleOffer(slug) {
             header,
             "slug" : slug.current,
             seo,
-            background_image,
+            "background_image" : background_image.asset->url,
             background_image_alt,
             header_desc,
             advantages,

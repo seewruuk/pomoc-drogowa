@@ -29,5 +29,10 @@ export default {
             name: "button_text",
             type: "string"
         },
+        {
+            title : "Link przycisku",
+            name: "button_url",
+            type: "string"
+        },
     ]
 }

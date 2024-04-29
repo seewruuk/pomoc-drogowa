@@ -3,6 +3,7 @@ import "./globals.scss";
 import StateContextProvider from "@/context/StateContext";
 import MenuLayout from "@/components/common/Menu/_MenuLayout";
 import FooterLayout from "@/components/common/Footer/FooterLayout";
+import Loader from "@/components/Loader/Loader";
 
 const inter = Outfit({subsets: ["latin"]});
 
@@ -18,9 +19,10 @@ export default function RootLayout({children}) {
         <html lang="pl">
         <body className={`${inter.className} relative`}>
         <StateContextProvider>
+            <Loader/>
             <MenuLayout/>
             {children}
-            <FooterLayout />
+            <FooterLayout/>
         </StateContextProvider>
         </body>
         </html>

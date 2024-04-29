@@ -30,6 +30,11 @@ const nextConfig = {
                 permanent: true,
             },
             {
+                source: '/aktualnosci',
+                destination: '/',
+                permanent: true,
+            },
+            {
                 source: '/uslugi',
                 destination: '/',
                 permanent: true,

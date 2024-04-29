@@ -1,7 +1,7 @@
 "use client"
 
 import {createContext, useState, useEffect} from 'react'
-import {getThreeLatestPosts} from "@/sanity/lib/sanity-utils";
+import {getHeroElements, getThreeLatestPosts} from "@/sanity/lib/sanity-utils";
 import {getCookie, setCookie} from 'cookies-next';
 
 export const StateContext = createContext({});
@@ -15,6 +15,8 @@ export default function StateContextProvider({children}) {
 
     const [news, setNews] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [heroElements, setHeroElements] = useState();
+    const [loader, setLoader] = useState(true);
 
     const [windowDimensions, setWindowDimensions] = useState({width: 0, height: 0});
     useEffect(() => {
@@ -52,6 +54,20 @@ export default function StateContextProvider({children}) {
         }
     }, [isMobile])
 
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const data = await getHeroElements();
+                setHeroElements(data)
+                console.log("hero elements", data)
+            } catch (e) {
+                console.log("error", e)
+            }
+        }
+        fetchData();
+    },[])
+
+
 
     useEffect(() => {
         if (isLoading) {
@@ -59,6 +75,7 @@ export default function StateContextProvider({children}) {
                 try {
                     const data = await getThreeLatestPosts();
                     setNews(data)
+
                 } catch (e) {
                     console.log("error", e)
                 }
@@ -77,7 +94,10 @@ export default function StateContextProvider({children}) {
         setNews,
         isLoading,
         setIsLoading,
-        displayVersion
+        displayVersion,
+        heroElements,
+        loader,
+        setLoader,
     };
 
     return (

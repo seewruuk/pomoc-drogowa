@@ -3,7 +3,7 @@ import Link from "next/link";
 import {useContext} from "react";
 import {StateContext} from "@/context/StateContext";
 
-export default function LowHero({text, category, title, desc}) {
+export default function LowHero({text, category, title, desc , image}) {
 
     const {theme} = useContext(StateContext);
 
@@ -17,7 +17,7 @@ export default function LowHero({text, category, title, desc}) {
         <section className={"relative"}>
             <div
                 style={{
-                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.94), rgba(0, 0, 0, 0.94)), url('https://picsum.photos/1920/1080')`,
+                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.94), rgba(0, 0, 0, 0.94)), url('${image ? image : 'https://picsum.photos/1920/1080'}')`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat'
@@ -26,11 +26,13 @@ export default function LowHero({text, category, title, desc}) {
                 <div className={"mx-auto max-w-[1420px] px-12 w-full flex justify-start items-center h-full"}>
 
                     <div className={"max-w-[550px]"}>
-                        <div className={"flex gap-4 text-[#fff]"}>
+                        <div className={"flex gap-4 text-[#fff] items-center"}>
                             <Link href={"/"} className={"text-[#666666]"}>{text}</Link>
                             {category && (
                                 <>
-                                    <span className={"text-[#666666]"}>.</span>
+                                    <span className={"border-[#666666] h-1 w-1 border-2 rounded-full"}>
+
+                                    </span>
                                     <span className={styles[theme]}>{category}</span>
                                 </>
                             )}

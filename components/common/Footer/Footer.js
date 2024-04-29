@@ -59,9 +59,11 @@ export default function Footer() {
 
             </div>
 
-            <div className={"max-w-[1420px] mx-auto flex justify-between py-5 max-md:px-6 px-12 max-lg:flex-col max-lg:gap-5"}>
+            <div className={"max-w-[1420px] mx-auto flex justify-between py-5 max-md:px-6 px-12 max-lg:flex-col max-lg:gap-5 text-[12px]"}>
                 <span className={"font-[250]"}>
-                    Copyright @ 2024 Pomocdrogowa.pl
+                    Copyright @ {
+                    new Date().getFullYear()
+                } Pomocdrogowa.pl
                 </span>
                 <Link href={"https://www.facebook.com/kacper.sewruk.7"} target={"_blank"} className={`${styles[theme]}}`}>
                     Wykonanie Strony: <span className={"font-[450]"}>@seewruuk</span>
