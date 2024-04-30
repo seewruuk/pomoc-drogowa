@@ -1,4 +1,6 @@
 import {Button} from "@/components";
+import SeparatorImage from "@/assets/images/separator-image.png";
+import Image from "next/image";
 
 export default function Separator() {
     return (
@@ -18,8 +20,8 @@ export default function Separator() {
             <section className={"w-full bg-black h-[400px] my-[75px] relative isolate stack-item z-0"}>
                 <div
                     className={"w-full h-full bg-gradient-to-r from-black from-50% to-transparent absolute top-0 left-0 right-0 bottom-0 z-0 max-md:hidden"}/>
-                <img
-                    src={"https://images.pexels.com/photos/912843/pexels-photo-912843.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"}
+                <Image
+                    src={SeparatorImage}
                     alt={"separator"}
                     className={"w-1/2 h-full object-cover float-end absoluter right-0 z-0 max-md:hidden"}/>
             </section>

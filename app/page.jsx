@@ -1,10 +1,13 @@
-import {About, Benefits, Gallery, Hero, Services, Review, Faq, News, Separator, NewsComponent} from "@/components";
+"use client"
+import {About, Benefits, Faq, Gallery, Hero, NewsComponent, Review, Separator, Services} from "@/components";
 import Icon1 from "@/assets/icons/icon1.svg";
 import Icon2 from "@/assets/icons/icon2.svg";
 import Icon3 from "@/assets/icons/icon3.svg";
 import Icon4 from "@/assets/icons/icon4.svg";
 import Icon5 from "@/assets/icons/icon5.svg";
 import Icon6 from "@/assets/icons/icon6.svg";
+import {getImages} from "@/sanity/lib/sanity-utils";
+import {useEffect, useState} from "react";
 
 
 export default function Home() {
@@ -42,14 +45,24 @@ export default function Home() {
         }
     ]
 
-    const images = [
-        "https://images.pexels.com/photos/912843/pexels-photo-912843.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "https://images.pexels.com/photos/761820/pexels-photo-761820.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "https://images.pexels.com/photos/276334/pexels-photo-276334.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "https://images.pexels.com/photos/912843/pexels-photo-912843.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "https://images.pexels.com/photos/761820/pexels-photo-761820.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "https://images.pexels.com/photos/276334/pexels-photo-276334.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    ]
+    const [images, setImages] = useState([]);
+
+
+
+    useEffect(() => {
+        const fetchImages = async () => {
+            try{
+                const images = await getImages();
+                setImages(images);
+            }catch (e){
+                console.log(e);
+            }
+        }
+        fetchImages();
+
+    }, [])
+
+
 
     const faq = [
         {
@@ -84,7 +97,9 @@ export default function Home() {
                 header={"Kompleksowa pomoc drogowa, na którą możesz liczyć"}
                 desc={"Nasze holowniki są gotowe, aby szybko i bezpiecznie dostarczyć Twój pojazd do wybranego miejsca."}/>
 
-            <Gallery images={images}/>
+            {
+                images && images.length > 0 && <Gallery images={images[0].images}/>
+            }
 
             <Review/>
 

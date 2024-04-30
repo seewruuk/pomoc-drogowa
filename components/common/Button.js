@@ -43,10 +43,10 @@ export default function Button({text, icon, target, type}) {
                         el.scrollIntoView({behavior: "smooth"});
                     }
                     if (type === "email") {
-                        window.open("mailto:test@wp.pl");
+                        window.open("mailto:kontakt@pomocdrogowa-gdynia.pl");
                     }
                     if (type === "phone") {
-                        window.open("tel:123456789");
+                        window.open("tel:603530530");
                     }
                 }
                 }

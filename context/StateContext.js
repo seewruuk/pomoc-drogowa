@@ -16,7 +16,7 @@ export default function StateContextProvider({children}) {
     const [news, setNews] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [heroElements, setHeroElements] = useState();
-    const [loader, setLoader] = useState(true);
+    const [loader, setLoader] = useState(false);
 
     const [windowDimensions, setWindowDimensions] = useState({width: 0, height: 0});
     useEffect(() => {

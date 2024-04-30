@@ -24,11 +24,15 @@ export default function Footer() {
                 <div className={"flex-1 max-lg:mb-[50px]"}>
                     <Link href={"/"} className={""}>
                         <Image src={WhiteLogo} alt={"Białe Logo"} width={180} height={46}/>
-                     </Link>
+                    </Link>
 
                     <div className={"flex flex-col gap-[8px] mt-[24px]"}>
                         <span className={"font-[250] cursor-default"}>ul. Sezamkowa 43</span>
                         <span className={"font-[250] cursor-default"}>81-079, Gdynia</span>
+                        <a href={"tel:603530530"} className={`font-[250] cursor-pointer ${styles[theme]}`}>+48 603 530 530</a>
+                        <a href={"mailto:kontakt@pomocdrogowa-gdynia.pl"} className={`font-[250] cursor-pointer ${styles[theme]}`}>
+                            kontakt@pomocdrogowa-gdynia.pl
+                        </a>
                     </div>
                 </div>
 
@@ -42,7 +46,8 @@ export default function Footer() {
                                         {
                                             item.links.map((link, index) => {
                                                 return (
-                                                    <Link key={link + index} href={link.href} className={`${styles[theme]}`}>
+                                                    <Link key={link + index} href={link.href}
+                                                          className={`${styles[theme]}`}>
                                                         {link.label}
                                                     </Link>
                                                 )
@@ -59,13 +64,15 @@ export default function Footer() {
 
             </div>
 
-            <div className={"max-w-[1420px] mx-auto flex justify-between py-5 max-md:px-6 px-12 max-lg:flex-col max-lg:gap-5 text-[12px]"}>
+            <div
+                className={"max-w-[1420px] mx-auto flex justify-between py-5 max-md:px-6 px-12 max-lg:flex-col max-lg:gap-5 text-[12px]"}>
                 <span className={"font-[250]"}>
                     Copyright @ {
                     new Date().getFullYear()
                 } Pomocdrogowa.pl
                 </span>
-                <Link href={"https://www.facebook.com/kacper.sewruk.7"} target={"_blank"} className={`${styles[theme]}}`}>
+                <Link href={"https://www.facebook.com/kacper.sewruk.7"} target={"_blank"}
+                      className={`${styles[theme]}}`}>
                     Wykonanie Strony: <span className={"font-[450]"}>@seewruuk</span>
                 </Link>
             </div>

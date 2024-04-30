@@ -7,6 +7,14 @@ export async function getPosts() {
     )
 }
 
+export async function getOffers(){
+    return client.fetch(
+        groq`*[_type == "offer"]{
+            "slug": slug.current,
+        } | order(_createdAt desc)`
+    )
+}
+
 export async function getThreeLatestPosts() {
     return client.fetch(
         groq`*[_type == "news"]{
@@ -18,6 +26,14 @@ export async function getThreeLatestPosts() {
         } | order(publishedAt desc)[0...3]`
     )
 }
+export async function getAllArticles() {
+    return client.fetch(
+        groq`*[_type == "news"]{
+            "slug": slug.current,
+        } | order(publishedAt desc)`
+    )
+
+}
 
 export async function getHeroElements(){
     return client.fetch(
@@ -28,6 +44,19 @@ export async function getHeroElements(){
             desc,
             button_text,
             button_url,
+        }`
+    )
+}
+
+export async function getImages(){
+    return client.fetch(
+        groq`*[_type == "images"]{
+            header,
+            images[]{
+                "image": image.asset->url,
+                imageAlt,
+            }
+           
         }`
     )
 }

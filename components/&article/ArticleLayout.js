@@ -6,7 +6,6 @@ import Loader from "@/components/common/Loader";
 import {PortableText} from "@portabletext/react";
 import {urlForImage} from "@/sanity/lib/image";
 
-
 export default function ArticleLayout({slug}) {
 
     const [data, setData] = useState(null);
@@ -62,7 +61,7 @@ export default function ArticleLayout({slug}) {
             <>
                 <LowHero title={data.title} text={"Aktualności"}/>
                 <section className={"max-w-[1420px] mx-auto px-12 my-[55px] flex flex-col gap-[55px] max-md:px-6"}>
-                        <PortableText value={data.description} components={ptComponents}/>
+                    <PortableText value={data.description} components={ptComponents}/>
                 </section>
             </>
         )

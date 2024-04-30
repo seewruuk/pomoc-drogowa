@@ -1,9 +1,9 @@
 import {Button} from "@/components";
-
+import ContactImage from "@/assets/images/contact-image.png"
+import Image from "next/image";
 
 export default function Contact() {
 
-    const image = "https://images.pexels.com/photos/912843/pexels-photo-912843.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
 
     return (
         <section
@@ -19,14 +19,14 @@ export default function Contact() {
                     dyspozycji 24/7.
                 </p>
                 <div className={"flex flex-col gap-3 items-start mt-[42px]"}>
-                    <Button text={"Zadzwoń / +48 123 123 123"} type={"phone"}/>
-                    <Button text={"Napisz wiadomość / test@wp.pl"} type={"email"}/>
+                    <Button text={"Zadzwoń teraz"} type={"phone"}/>
+                    <Button text={"Napisz wiadomość email"} type={"email"}/>
                 </div>
 
             </div>
 
             <div className={"flex-1"}>
-                <img src={image} alt={"contact"} className={"w-full h-full object-cover rounded-2xl"}/>
+                <Image src={ContactImage} alt={"contact"} width={500} height={500} className={"w-full h-[430px] object-cover rounded-2xl max-lg:h-[300px] max-md:h-auto"}/>
             </div>
 
         </section>
