@@ -19,8 +19,10 @@ export default function Contact() {
                     dyspozycji 24/7.
                 </p>
                 <div className={"flex flex-col gap-3 items-start mt-[42px]"}>
-                    <Button text={"Zadzwoń teraz"} type={"phone"}/>
+
                     <Button text={"Napisz wiadomość email"} type={"email"}/>
+                    <Button text={"Zadzwoń teraz"} type={"phone"}/>
+
                 </div>
 
             </div>

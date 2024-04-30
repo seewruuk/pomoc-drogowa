@@ -29,8 +29,11 @@ export default function Footer() {
                     <div className={"flex flex-col gap-[8px] mt-[24px]"}>
                         <span className={"font-[250] cursor-default"}>ul. Sezamkowa 43</span>
                         <span className={"font-[250] cursor-default"}>81-079, Gdynia</span>
-                        <a href={"tel:603530530"} className={`font-[250] cursor-pointer ${styles[theme]}`}>+48 603 530 530</a>
-                        <a href={"mailto:kontakt@pomocdrogowa-gdynia.pl"} className={`font-[250] cursor-pointer ${styles[theme]}`}>
+                        <a href={"tel:+48603530530"} className={`font-[250] cursor-pointer ${styles[theme]}`}>+48 603 530 530</a>
+                        <a href={"tel:+48601633954"} className={`font-[250] cursor-pointer ${styles[theme]}`}>+48 601 633 954</a>
+
+                        <a href={"mailto:kontakt@pomocdrogowa-gdynia.pl"}
+                           className={`font-[250] cursor-pointer ${styles[theme]}`}>
                             kontakt@pomocdrogowa-gdynia.pl
                         </a>
                     </div>
