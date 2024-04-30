@@ -5,6 +5,7 @@ import LowHero from "@/components/common/LowHero";
 import Loader from "@/components/common/Loader";
 import {PortableText} from "@portabletext/react";
 import {urlForImage} from "@/sanity/lib/image";
+import Image from "next/image";
 
 export default function ArticleLayout({slug}) {
 
@@ -27,7 +28,7 @@ export default function ArticleLayout({slug}) {
                     return null
                 }
                 return (
-                    <img src={urlForImage(value.asset._ref)} alt={value.alt} className={"w-full h-[400px] object-cover rounded-2xl"}/>
+                    <Image src={urlForImage(value.asset._ref)} alt={value.alt} width="0" height="0" sizes="100vw" className={"w-full h-[400px] object-cover rounded-2xl"}/>
                 )
             }
 
@@ -43,7 +44,6 @@ export default function ArticleLayout({slug}) {
                 try {
                     const data = await getSingleArticle(slug);
                     setData(data)
-                    console.log(data)
                 } catch (e) {
                     console.log("error", e)
                 }

@@ -3,6 +3,7 @@ import {Label} from "../index";
 import {StateContext} from "../../context/StateContext";
 import {useContext} from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 
 const NewsCard = ({...props}) => {
@@ -20,7 +21,7 @@ const NewsCard = ({...props}) => {
 
     return (
         <Link href={`/aktualnosci/${slug}`} className={"relative max-lg:my-6"}>
-            <img src={image} alt={`${imageAlt}`} className={"w-full h-[300px] object-cover rounded-2xl"}/>
+            <Image src={image} alt={`${imageAlt}`} width={1000} height={1000} className={"w-full h-[300px] object-cover rounded-2xl"}/>
             <div className={"mt-[32px]"}>
                 <Label text={customDate} />
                 <h3 className={"mt-[18px]"}>{title}</h3>

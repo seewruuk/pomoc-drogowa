@@ -59,7 +59,6 @@ export default function StateContextProvider({children}) {
             try {
                 const data = await getHeroElements();
                 setHeroElements(data)
-                console.log("hero elements", data)
             } catch (e) {
                 console.log("error", e)
             }

@@ -45,7 +45,7 @@ export default function Loader() {
                             }}
                             onAnimationComplete={() => setLoader(false)}
                         >
-                            <Image src={WhiteLogo} alt={"Logo"} width={300} height={300}/>
+                            <Image src={WhiteLogo} alt={"Logo"} width="0" height="0" sizes="100vw"/>
                         </motion.div>
 
                     </motion.div>

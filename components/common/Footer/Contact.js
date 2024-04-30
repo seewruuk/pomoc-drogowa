@@ -26,7 +26,7 @@ export default function Contact() {
             </div>
 
             <div className={"flex-1"}>
-                <Image src={ContactImage} alt={"contact"} width={500} height={500} className={"w-full h-[430px] object-cover rounded-2xl max-lg:h-[300px] max-md:h-auto"}/>
+                <Image src={ContactImage} alt={"contact"} width="0" height="0" sizes="100vw" className={"w-full h-[430px] object-cover rounded-2xl max-lg:h-[300px] max-md:h-auto"}/>
             </div>
 
         </section>

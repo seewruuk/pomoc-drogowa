@@ -20,6 +20,11 @@ export default function Hero() {
                     <h2>{children}</h2>
                 )
             },
+            h1: ({children}) => {
+                return (
+                    <>{children}</>
+                )
+            },
             normal: ({children}) => {
                 return (
                     <p>{children}</p>
@@ -81,22 +86,35 @@ export default function Hero() {
                         }
 
 
-                        <Button
-                            text={`Skontaktuj się`}
-                            icon={ContactIcon}
-                            target={"#kontakt"}
-                            type={"cta"}
-                        />
+                        {
+                            heroElements && (
+                                <Button
+                                    text={`Skontaktuj się`}
+                                    icon={ContactIcon}
+                                    target={"#kontakt"}
+                                    type={"cta"}
+                                />
+                            )
+                        }
 
 
-                        <p className={"text-white text-[12px] flex gap-4  mt-[24px]"}>
-                    <span>
-                        <Image src={ClockIcon} alt={"Ikona zegara"} width={24} height={24} style={{
-                            filter: 'brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(2%) hue-rotate(147deg) brightness(111%) contrast(101%)'
-                        }}/>
-                    </span>
-                            <span>Pomoc drogowa dostępna 24/h 7 dni w tygodniu</span>
-                        </p>
+                        {
+                            heroElements && (
+                                <p className={"text-white text-[12px] flex gap-4  mt-[24px]"}>
+                                    <span>
+                                        <Image
+                                            src={ClockIcon}
+                                            alt={"Ikona zegara"}
+                                            width="0" height="0" sizes="100vw"
+                                            style={{
+                                                filter: 'brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(2%) hue-rotate(147deg) brightness(111%) contrast(101%)'
+                                            }}/>
+                                    </span>
+                                    <span>Pomoc drogowa dostępna 24/h 7 dni w tygodniu</span>
+                                </p>
+                            )
+                        }
+
                     </div>
 
                     <div className={"flex flex-col gap-5 max-md:order-1 max-md:flex-row max-md:mb-4"}>

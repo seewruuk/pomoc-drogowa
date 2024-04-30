@@ -14,6 +14,18 @@ export async function getOffers(){
         } | order(_createdAt desc)`
     )
 }
+export async function getAbout(){
+    return client.fetch(
+        groq`*[_type == "about"]{
+            header,
+            description,
+            images[]{
+                "image": image.asset->url,
+                imageAlt,
+            }
+        } | order(_createdAt desc)`
+    )
+}
 
 export async function getThreeLatestPosts() {
     return client.fetch(

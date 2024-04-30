@@ -23,7 +23,7 @@ export default function Footer() {
 
                 <div className={"flex-1 max-lg:mb-[50px]"}>
                     <Link href={"/"} className={""}>
-                        <Image src={WhiteLogo} alt={"Białe Logo"} width={180} height={46}/>
+                        <Image src={WhiteLogo} alt={"Białe Logo"} width="0" height="0" sizes="100vw"/>
                     </Link>
 
                     <div className={"flex flex-col gap-[8px] mt-[24px]"}>

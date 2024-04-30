@@ -20,7 +20,7 @@ function Card({...props}) {
         <div className={"flex flex-col gap-[42px] w-1/2 relative py-12 px-6 max-md:w-full max-md:px-0"}>
             <div className={"flex gap-4 items-center flex-grow"}>
                 <span className={`aspect-square h-[45px] grid place-items-center ${styles[theme]} rounded-2xl`}>
-                    <Image src={ArrowRight} alt={"Arrow Right Icon"} width={24} height={24}/>
+                    <Image src={ArrowRight} alt={"Arrow Right Icon"} width="0" height="0" sizes="100vw"/>
                 </span>
                 <h3 className={"text-[400]"}>{question}</h3>
             </div>

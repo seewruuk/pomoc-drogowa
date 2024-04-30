@@ -1,16 +1,31 @@
 "use client"
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Button, Label} from "@/components";
+import Image from "next/image";
+import {getAbout} from "@/sanity/lib/sanity-utils";
+
+
+async function getData() {
+    const data = await getAbout();
+    return data[0];
+}
 
 export default function About() {
 
-    const images = [
-        "https://images.pexels.com/photos/912843/pexels-photo-912843.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "https://images.pexels.com/photos/761820/pexels-photo-761820.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "https://images.pexels.com/photos/276334/pexels-photo-276334.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    ]
+    const [data, setData] = useState(null)
+
+    useEffect(() => {
+        getData().then(data => {
+            setData(data)
+        })
+    }, []);
+
+    const images = data && data.images
+
 
     const [selectedImage, setSelectedImage] = useState(0)
+
+    if(data === null) return <p className={"text-center py-10 animate-pulse"}>Pobieranie danych...</p>
 
     return (
         <section className={"max-w-[1420px] mx-auto px-12 py-[150px] max-md:px-6"} id={"o-nas"}>
@@ -18,11 +33,12 @@ export default function About() {
 
                 <div className={"w-[50%] flex flex-col gap-4 items-start max-lg:w-[100%]"}>
                     <Label text={"Poznaj nas"}/>
-                    <h2 className={"text-[36px] font-[700] mb-[42px]"}>Twoi lokalni eksperci od pomocy drogowej</h2>
-                    <p className={"leading-[32px] mb-[32px]"}>W Pomoc Drogowa, z pasją służymy kierowcom w Trójmieście i okolicach już od ponad 10 lat. Nasz
-                        zespół składa się z doświadczonych profesjonalistów, którzy są wyposażeni w najnowocześniejszy
-                        sprzęt, aby zapewnić Ci najlepsze możliwe rozwiązanie problemu. Twoje bezpieczeństwo i
-                        zadowolenie są dla nas priorytetem.</p>
+                    <h2 className={"text-[36px] font-[700] mb-[42px]"}>{data.header}</h2>
+                    <p className={"leading-[32px] mb-[32px]"}>
+                        {
+                            data.description
+                        }
+                    </p>
                     <Button text={"Skontaktuj się"}
                             target={"#kontakt"}
                             type={"cta"}
@@ -30,8 +46,8 @@ export default function About() {
                 </div>
 
                 <div className={"w-[50%] flex flex-col max-lg:w-[100%]"}>
-                    <img src={images[selectedImage]} alt={"about"}
-                         className={"h-[400px] aspect-square object-cover rounded-2xl"}/>
+                    <Image width="0" height="0" sizes="100vw"  src={images[selectedImage].image} alt={images[selectedImage].imageAlt}
+                         className={"h-[400px] aspect-square object-cover rounded-2xl w-full"}/>
                     <div className={"flex gap-[6px] justify-center mt-[25px]"}>
                         {
                             images.map((image, index) => (
