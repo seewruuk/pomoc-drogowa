@@ -25,6 +25,7 @@ export default function Footer() {
                     <Link href={"/"} className={""}>
                         <Image src={WhiteLogo} alt={"Białe Logo"} width="0" height="0" sizes="100vw"/>
                     </Link>
+                    {/*?*/}
 
                     <div className={"flex flex-col gap-[8px] mt-[24px]"}>
                         <span className={"font-[250] cursor-default"}>ul. Sezamkowa 43</span>
