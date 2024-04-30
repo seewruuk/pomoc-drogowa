@@ -56,7 +56,7 @@ export default function ArticleLayout({slug}) {
     }, [slug, isLoading]);
 
 
-    if (!isLoading && data) {
+    if (data !== null) {
         return (
             <>
                 <LowHero title={data.title} text={"Aktualności"}/>

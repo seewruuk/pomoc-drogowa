@@ -29,7 +29,7 @@ export default function OfferLayout({slug}) {
     }, [slug, isLoading]);
 
 
-    if(isLoading) {
+    if(data === null) {
         return <Loader />
     }else{
         return (
