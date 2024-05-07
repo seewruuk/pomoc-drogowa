@@ -11,7 +11,8 @@ export const metadata = {
     title: {
         default: "Śliwiński - Pomoc Drogowa i Transport Ciężkich Maszyn | Trójmiasto",
     },
-    description: "Profesjonalna pomoc drogowa i bezpieczny transport maszyn ciężkich na terenie Gdańska, Gdyni i Sopotu. Śliwiński - Twoje wsparcie na drodze, 24/7!",
+    description: "Zaufaj doświadczeniu Śliwiński Pomoc Drogowa w Trójmieście. Oferujemy profesjonalne usługi transportu maszyn ciężkich oraz szybkie holowanie samochodów. Skontaktuj się z nami 24/7!",
+    keywords : "Śliwiński Pomoc Drogowa, pomoc drogowa Trójmiasto, holowanie Gdańsk, transport maszyn Gdynia, pomoc drogowa Sopot, holowanie pojazdów Trójmiasto, usługi transportowe Trójmiasto, szybka pomoc drogowa, transport ciężkiego sprzętu, holowanie 24h",
 };
 
 export default function RootLayout({children}) {

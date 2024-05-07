@@ -1,6 +1,4 @@
 "use client"
-
-
 import Link from "next/link";
 import {useState} from "react";
 import {motion, AnimatePresence, cubicBezier} from 'framer-motion'
@@ -8,10 +6,21 @@ import ChangeTheme from "@/components/common/Menu/ChangeTheme";
 import FacebookIcon from "@/assets/icons/fb-icon.svg"
 import InstagramIcon from "@/assets/icons/ig-icon.svg"
 import Image from "next/image";
+import {useRouter} from "next/navigation";
 
-export default function MobileMenuContent({theme, menuOpen, setTheme}) {
+export default function MobileMenuContent({theme, setMenuOpen, setTheme}) {
 
     const [showSubMenu, setShowSubMenu] = useState(false)
+    const router = useRouter();
+
+
+    const handleNavigation = (url) => {
+        setMenuOpen(false);
+
+        setTimeout(() => {
+                router.push(url);
+            }, 300)
+    }
 
     return (
         <>
@@ -39,14 +48,11 @@ export default function MobileMenuContent({theme, menuOpen, setTheme}) {
             >
                 <div className={"h-full overflow-scroll flex flex-col"}>
                     <ul className={"text-[18px] flex flex-col gap-5 items-center text-center"}>
-                        <li>
-                            <Link href={"/"}>Strona główna</Link>
-                        </li>
-                        <li>
-                            <Link href={"/"}>O nas</Link>
-                        </li>
+                        <li onClick={() => handleNavigation("/")}>Strona główna</li>
+                        <li onClick={() => handleNavigation("/#onas")}>O nas</li>
                         <li onClick={() => setShowSubMenu((prev) => !prev)}>
-                            <Link href={"/"}>Usługi</Link>
+                            <li onClick={() => handleNavigation("/#uslugi")}>Usługi</li>
+
                             <AnimatePresence>
 
                                 {
@@ -68,8 +74,12 @@ export default function MobileMenuContent({theme, menuOpen, setTheme}) {
 
                                         >
                                             <li className={"flex flex-col gap-5 pt-5 pb-2 font-[200]"}>
-                                                <Link href={"/uslugi/pomoc-drogowa"}>1. Pomoc drogowa</Link>
-                                                <Link href={"/uslugi/transport-maszyn"}>2. Transport maszyn</Link>
+                                                <li onClick={() => handleNavigation("/uslugi/pomoc-drogowa")}>1. Pomoc
+                                                    drogowa
+                                                </li>
+                                                <li onClick={() => handleNavigation("/uslugi/transport-maszyn")}>2.
+                                                    Transport maszyn
+                                                </li>
                                             </li>
                                         </motion.ul>
                                     )
@@ -77,15 +87,11 @@ export default function MobileMenuContent({theme, menuOpen, setTheme}) {
                             </AnimatePresence>
 
                         </li>
-                        <li>
-                            <Link href={"/"}>Opinie</Link>
-                        </li>
-                        <li>
-                            <Link href={"/"}>Faq</Link>
-                        </li>
-                        <li>
-                            <Link href={"/"}>Kontakt</Link>
-                        </li>
+
+                        <li onClick={() => handleNavigation("/#opinie")}>Opinie</li>
+                        <li onClick={() => handleNavigation("/galeria")}>Galeria zdjęć</li>
+                        <li onClick={() => handleNavigation("/#faq")}>Faq</li>
+                        <li onClick={() => handleNavigation("/#kontakt")}>Kontakt</li>
                     </ul>
 
                     <ChangeTheme theme={theme} setTheme={setTheme}/>

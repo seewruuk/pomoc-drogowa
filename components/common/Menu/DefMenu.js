@@ -95,6 +95,9 @@ export default function DesktopMenu() {
                         <Link href={"/#opinie"} className={`${styles[theme]}`}>Opinie</Link>
                     </li>
                     <li>
+                        <Link href={"/galeria"} className={`${styles[theme]}`}>Galeria</Link>
+                    </li>
+                    <li>
                         <Link href={"/#faq"} className={`${styles[theme]}`}>FAQ</Link>
                     </li>
                     <li>

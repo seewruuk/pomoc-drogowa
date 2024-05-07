@@ -7,6 +7,21 @@ export async function getPosts() {
     )
 }
 
+export async function getGallery(){
+    return client.fetch(
+        groq`*[_type == "gallery"]{
+            title,
+            "image" : image.asset->url,
+            imageAlt,
+            seo,
+            images[]{
+                "image": image.asset->url,
+                imageAlt,
+            }
+        }[0]`
+    )
+}
+
 export async function getOffers(){
     return client.fetch(
         groq`*[_type == "offer"]{
