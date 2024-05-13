@@ -105,7 +105,7 @@ export default function Home() {
 
             <Faq data={faq}/>
 
-            <NewsComponent />
+            {/*<NewsComponent />*/}
 
             <Separator/>
 
