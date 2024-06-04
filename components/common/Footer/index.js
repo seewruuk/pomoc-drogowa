@@ -28,19 +28,19 @@ export const footerData = [
             },
         ]
     },
-    {
-        header: "Prywatność",
-        links: [
-            {
-                label: "Polityka prywatności",
-                href: "/polityka-prywatności"
-            },
-            {
-                label: "Regulamin",
-                href: "/regulamin"
-            },
-        ]
-    },
+    // {
+    //     header: "Prywatność",
+    //     links: [
+    //         {
+    //             label: "Polityka prywatności",
+    //             href: "/polityka-prywatności"
+    //         },
+    //         {
+    //             label: "Regulamin",
+    //             href: "/regulamin"
+    //         },
+    //     ]
+    // },
     {
         header: "Social Media",
         links: [
@@ -50,7 +50,7 @@ export const footerData = [
             },
             {
                 label: "Instagram",
-                href: "https://www.facebook.com/sliwinski.pomoc.drogowa/"
+                href: "https://www.instagram.com/pomocdrogowasliwinski/"
             },
         ]
     },

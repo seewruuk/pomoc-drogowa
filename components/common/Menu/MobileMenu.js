@@ -9,6 +9,7 @@ import {StateContext} from "@/context/StateContext";
 import {useContext, useEffect, useState} from "react";
 import MobileMenuContent from "@/components/common/Menu/MobileMenuContent";
 import {AnimatePresence, motion} from "framer-motion";
+import Link from "next/link";
 
 
 export default function MobileMenu() {
@@ -43,9 +44,9 @@ export default function MobileMenu() {
 
                 >
                     <div className={"w-full h-full px-6 text-white flex justify-between items-center"}>
-                        <div>
+                        <Link href={"/"}>
                             <Image src={LogoWhite} alt={"Białe Logo firmy"} width={150} height={50}/>
-                        </div>
+                        </Link>
 
                         <button className={`${styles[theme]} aspect-square h-[42px] grid place-items-center rounded-lg`}
                                 onClick={() => setMenuOpen(!menuOpen)}

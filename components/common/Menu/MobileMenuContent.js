@@ -97,12 +97,13 @@ export default function MobileMenuContent({theme, setMenuOpen, setTheme}) {
                     <ChangeTheme theme={theme} setTheme={setTheme}/>
 
                     <div className={"flex justify-center gap-3 py-10"}>
-                        <Link href={"#"}
+                        <Link href={"https://www.facebook.com/sliwinski.pomoc.drogowa/"}
+                                target={"_blank"}
                               className={"aspect-square h-[42px] border-2 rounded-full grid place-items-center"}>
                             <Image src={FacebookIcon} alt={"Facebook Icon"} width={9} height={17}/>
                         </Link>
 
-                        <Link href={"#"}
+                        <Link href={"https://www.instagram.com/pomocdrogowasliwinski/"} target={"_blank"}
                               className={"aspect-square h-[42px] border-2 rounded-full grid place-items-center"}>
                             <Image src={InstagramIcon} alt={"Facebook Icon"} width={16} height={16}/>
                         </Link>
