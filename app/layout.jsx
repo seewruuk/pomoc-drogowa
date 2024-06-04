@@ -4,6 +4,7 @@ import StateContextProvider from "@/context/StateContext";
 import MenuLayout from "@/components/common/Menu/_MenuLayout";
 import FooterLayout from "@/components/common/Footer/FooterLayout";
 import Loader from "@/components/Loader/Loader";
+import Head from "next/head";
 
 const inter = Outfit({subsets: ["latin"]});
 
@@ -18,6 +19,8 @@ export const metadata = {
 export default function RootLayout({children}) {
     return (
         <html lang="pl">
+
+
         <body className={`${inter.className} relative`}>
         <StateContextProvider>
             <Loader/>
