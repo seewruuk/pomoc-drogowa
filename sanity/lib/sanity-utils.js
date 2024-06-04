@@ -26,6 +26,8 @@ export async function getOffers(){
     return client.fetch(
         groq`*[_type == "offer"]{
             "slug": slug.current,
+                    _createdAt,
+
         } | order(_createdAt desc)`
     )
 }
@@ -57,6 +59,8 @@ export async function getAllArticles() {
     return client.fetch(
         groq`*[_type == "news"]{
             "slug": slug.current,
+                    _createdAt,
+
         } | order(publishedAt desc)`
     )
 
