@@ -50,8 +50,8 @@ export default function MobileMenuContent({theme, setMenuOpen, setTheme}) {
                     <ul className={"text-[18px] flex flex-col gap-5 items-center text-center"}>
                         <li onClick={() => handleNavigation("/")}>Strona główna</li>
                         <li onClick={() => handleNavigation("/#onas")}>O nas</li>
-                        <li onClick={() => setShowSubMenu((prev) => !prev)}>
-                            <li onClick={() => handleNavigation("/#uslugi")}>Usługi</li>
+                        <li onClick={() => setShowSubMenu((prev) => !prev)}>Usługi
+
 
                             <AnimatePresence>
 
