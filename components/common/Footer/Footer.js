@@ -31,9 +31,9 @@ export default function Footer() {
                         <a href={"tel:+48603530530"} className={`font-[250] cursor-pointer ${styles[theme]}`}>+48 603 530 530</a>
                         <a href={"tel:+48601633954"} className={`font-[250] cursor-pointer ${styles[theme]}`}>+48 601 633 954</a>
 
-                        <a href={"mailto:kontakt@pomocdrogowa-gdynia.pl"}
+                        <a href={"mailto:pomocdrogowa24.dawid@gmail.com"}
                            className={`font-[250] cursor-pointer ${styles[theme]}`}>
-                            kontakt@pomocdrogowa-gdynia.pl
+                            pomocdrogowa24.dawid@gmail.com
                         </a>
                     </div>
                 </div>

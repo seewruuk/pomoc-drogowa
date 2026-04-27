@@ -63,7 +63,7 @@ export default function Button({text, icon, target, type}) {
                             el.scrollIntoView({behavior: "smooth"});
                         }
                         if (type === "email") {
-                            window.open("mailto:kontakt@pomocdrogowa-gdynia.pl");
+                            window.open("mailto:pomocdrogowa24.dawid@gmail.com");
                         }
                         if (type === "phone") {
                             setExpandNumbers(!expandNumbers);
