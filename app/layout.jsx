@@ -1,8 +1,7 @@
 import {Outfit} from "next/font/google";
 import "./globals.scss";
 import StateContextProvider from "@/context/StateContext";
-import MenuLayout from "@/components/common/Menu/_MenuLayout";
-import FooterLayout from "@/components/common/Footer/FooterLayout";
+import ConditionalChrome from "@/components/common/ConditionalChrome";
 import Loader from "@/components/Loader/Loader";
 import Head from "next/head";
 
@@ -24,9 +23,9 @@ export default function RootLayout({children}) {
         <body className={`${inter.className} relative`}>
         <StateContextProvider>
             <Loader/>
-            <MenuLayout/>
-            {children}
-            <FooterLayout/>
+            <ConditionalChrome>
+                {children}
+            </ConditionalChrome>
         </StateContextProvider>
         </body>
         </html>
