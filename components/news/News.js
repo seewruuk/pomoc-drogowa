@@ -1,27 +1,19 @@
 "use client"
-import {Label} from "../index";
-import {StateContext} from "../../context/StateContext";
-import {useContext} from "react";
+import Label from "@/components/common/Label";
 import Link from "next/link";
-import Image from "next/image";
+import SmartImage from "@/components/common/SmartImage";
 
 
 const NewsCard = ({...props}) => {
 
-    const {title, slug, image, imageAlt, date} = props.data;
-    const {theme} = useContext(StateContext);
-
-    let customDate = new Date(date);
-    customDate = customDate.toLocaleDateString();
-
-    const styles = {
-        violet: "bg-violet text-white",
-        yellow: "bg-yellow text-black",
-    }
+    const {title, slug, image, lqip, imageAlt, date} = props.data;
+    const customDate = date ? new Date(date).toLocaleDateString("pl-PL") : "";
 
     return (
         <Link href={`/aktualnosci/${slug}`} className={"relative max-lg:my-6"}>
-            <Image src={image} alt={`${imageAlt}`} width={1000} height={1000} className={"w-full h-[300px] object-cover rounded-2xl"}/>
+            <div className={"relative w-full h-[300px] rounded-2xl overflow-hidden bg-[#EBEBEB]"}>
+                <SmartImage src={image} lqip={lqip} alt={imageAlt || title} fill sizes="(max-width: 1024px) 100vw, 33vw" className={"object-cover"}/>
+            </div>
             <div className={"mt-[32px]"}>
                 <Label text={customDate} />
                 <h3 className={"mt-[18px]"}>{title}</h3>
@@ -44,7 +36,7 @@ export default function News({data}) {
                     {
                         data && data.map((item, index) => {
                             return (
-                                <NewsCard key={index} data={item}/>
+                                <NewsCard key={item.slug || index} data={item}/>
                             )
                         })
                     }

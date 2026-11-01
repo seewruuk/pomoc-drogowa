@@ -16,6 +16,8 @@ const body = Inter({
 
 export const metadata = {
   title: "Redesign — Pomoc Drogowa",
+  // Makieta – nie indeksujemy jej w wyszukiwarkach
+  robots: { index: false, follow: false },
 };
 
 export default function RedesignLayout({ children }) {

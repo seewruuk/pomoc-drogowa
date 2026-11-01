@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Śliwiński Pomoc Drogowa – strona www
 
-## Getting Started
+Next.js 14 (App Router) + Sanity CMS + Tailwind CSS.
 
-First, run the development server:
+## Uruchomienie
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # build produkcyjny (wymaga dostępu do API Sanity)
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Panel treści (Sanity Studio): `/sanity`.
 
-You can start editing the page by modifying `app/page.jsx`. The page auto-updates as you edit the file.
+## Zmienne środowiskowe
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+| Zmienna | Opis |
+| --- | --- |
+| `NEXT_PUBLIC_SANITY_PROJECT_ID` | ID projektu Sanity (`rmjk3ild`) |
+| `NEXT_PUBLIC_SANITY_DATASET` | Dataset (`production`) |
+| `NEXT_PUBLIC_BASE_URL` | **Docelowa domena**, np. `https://twojadomena.pl` (bez `/` na końcu). Używana w canonicalach, Open Graph, sitemap.xml, robots.txt i danych strukturalnych. |
+| `SANITY_REVALIDATE_SECRET` | (opcjonalnie) sekret webhooka do natychmiastowego odświeżania treści |
 
-## Learn More
+## Jak działają dane
 
-To learn more about Next.js, take a look at the following resources:
+- Treści z Sanity są pobierane **na serwerze** (Server Components) i trafiają od razu do HTML – dobre dla SEO i szybkości.
+- Strony są generowane statycznie i odświeżane co 10 minut (ISR, `revalidate = 600`).
+- Natychmiastowe odświeżenie po publikacji w Sanity: w sanity.io/manage → API → Webhooks dodaj webhook
+  `POST https://TWOJA-DOMENA/api/revalidate` z sekretem równym `SANITY_REVALIDATE_SECRET`.
+- Zdjęcia z Sanity są skalowane przez CDN Sanity (`components/common/SmartImage.js`) z rozmytym podglądem (LQIP).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Struktura
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- `app/` – strony (strona główna, `uslugi/[slug]`, `aktualnosci/[slug]`, `galeria`, 404, sitemap, robots, webhook)
+- `components/` – komponenty UI
+- `data/home.js` – stałe treści strony głównej (usługi, FAQ, opinie)
+- `lib/site.js` – dane firmy (telefony, e-mail, social media) i dane strukturalne schema.org
+- `lib/metadata.js` – wspólne metadane SEO podstron
+- `sanity/` – konfiguracja klienta, zapytania GROQ i schematy CMS
+- `app/redesign` – makieta nowego wyglądu (ukryta przed wyszukiwarkami)

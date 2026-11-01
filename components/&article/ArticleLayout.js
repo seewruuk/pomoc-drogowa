@@ -1,73 +1,33 @@
-"use client"
-import {useEffect, useState} from "react";
-import {getSingleArticle} from "@/sanity/lib/sanity-utils";
 import LowHero from "@/components/common/LowHero";
-import Loader from "@/components/common/Loader";
+import SmartImage from "@/components/common/SmartImage";
 import {PortableText} from "@portabletext/react";
 import {urlForImage} from "@/sanity/lib/image";
-import Image from "next/image";
 
-export default function ArticleLayout({slug}) {
-
-    const [data, setData] = useState(null);
-
-    const [isLoading, setIsLoading] = useState(true);
-    const ptComponents = {
-        block: {
-            normal: ({children}) => {
-                return (
-                    <p>
-                        {children}
-                    </p>
-                )
-            }
-        },
-        types: {
-            image: ({value}) => {
-                if (!value?.asset?._ref) {
-                    return null
-                }
-                return (
-                    <Image src={urlForImage(value.asset._ref)} alt={value.alt} width="0" height="0" sizes="100vw" className={"w-full h-[400px] object-cover rounded-2xl"}/>
-                )
-            }
-
+const ptComponents = {
+    block: {
+        normal: ({children}) => <p>{children}</p>,
+    },
+    types: {
+        image: ({value}) => {
+            if (!value?.asset?._ref) return null;
+            return (
+                <div className={"relative w-full h-[400px] rounded-2xl overflow-hidden bg-[#EBEBEB]"}>
+                    <SmartImage src={urlForImage(value.asset._ref)} alt={value.alt || ""} fill
+                                sizes="(max-width: 1420px) 100vw, 1324px" className={"object-cover"}/>
+                </div>
+            )
         }
-
-
     }
+}
 
-
-    useEffect(() => {
-        if (isLoading) {
-            const fetchData = async () => {
-                try {
-                    const data = await getSingleArticle(slug);
-                    setData(data)
-                } catch (e) {
-                    console.log("error", e)
-                }
-                setIsLoading(false)
-            }
-            fetchData();
-        }
-        setIsLoading(false)
-
-    }, [slug, isLoading]);
-
-
-    if (data !== null) {
-        return (
-            <>
-                <LowHero title={data.title} text={"Aktualności"}/>
-                <section className={"max-w-[1420px] mx-auto px-12 my-[55px] flex flex-col gap-[55px] max-md:px-6"}>
-                    <PortableText value={data.description} components={ptComponents}/>
-                </section>
-            </>
-        )
-    } else {
-        return (
-            <Loader/>
-        )
-    }
+// Dane artykułu przychodzą z serwera (app/aktualnosci/[slug]/page.js)
+export default function ArticleLayout({data}) {
+    return (
+        <article>
+            <LowHero title={data.title} text={"Aktualności"} image={data.image} lqip={data.lqip}/>
+            <section className={"max-w-[1420px] mx-auto px-12 my-[55px] flex flex-col gap-[55px] max-md:px-6"}>
+                {data.description && <PortableText value={data.description} components={ptComponents}/>}
+            </section>
+        </article>
+    )
 }

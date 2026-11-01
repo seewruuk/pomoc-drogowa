@@ -12,7 +12,7 @@ export const footerData = [
             },
             {
                 label: "Usługi",
-                href: "/#usługi"
+                href: "/#uslugi"
             },
             {
                 label: "Opinie",

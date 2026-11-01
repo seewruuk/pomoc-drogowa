@@ -1,27 +1,17 @@
-"use client"
-
 import MobileMenu from "@/components/common/Menu/MobileMenu";
 import DesktopMenu from "@/components/common/Menu/DefMenu";
-import {StateContext} from "@/context/StateContext";
-import {useContext} from "react";
 
-
+// Wybór wersji menu w CSS (próg 975px jak wcześniej) – poprawne menu jest widoczne
+// od pierwszego renderu, bez mignięcia wersji desktopowej na telefonie.
 export default function MenuLayout() {
-
-
-    const {displayVersion} = useContext(StateContext);
-
     return (
-        <>
-            {
-                displayVersion === "desktop" ? (
-                    <DesktopMenu/>
-                ) : (
-                    <MobileMenu/>
-                )
-            }
-
-
-        </>
+        <header>
+            <div className={"max-[975px]:hidden"}>
+                <DesktopMenu/>
+            </div>
+            <div className={"min-[976px]:hidden"}>
+                <MobileMenu/>
+            </div>
+        </header>
     )
 }

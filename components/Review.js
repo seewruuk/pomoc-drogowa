@@ -1,32 +1,18 @@
 "use client"
 import {useContext} from "react";
-import {StateContext} from "../context/StateContext";
-import {Label} from "../components/index";
-import {data} from "autoprefixer";
+import {StateContext} from "@/context/StateContext";
+import Label from "@/components/common/Label";
+import {reviews} from "@/data/home";
+
+const styles = {
+    yellow: "bg-yellow",
+    violet: "bg-violet",
+};
+
+const formatDate = (iso) => iso.split("-").reverse().join(".");
 
 export default function Review() {
-
     const {theme} = useContext(StateContext);
-
-    const styles = {
-        yellow: "bg-yellow",
-        violet: "bg-violet",
-    }
-
-    const data = [
-        {
-            user: "Jakub",
-            city: "Gdynia",
-            text: "Kiedy moje auto odmówiło posłuszeństwa w środku nocy, Pomoc Drogowa była moją deską ratunku. Przybyli błyskawicznie i profesjonalnie zajęli się problemem. Niezmiernie jestem wdzięczny za ich pomoc!",
-            date: "12.04.2024"
-        },
-        {
-            user: "Katarzyna",
-            city: "Gdańsk",
-            text: "Dziękuję za szybką reakcję i pomoc w trudnej sytuacji. Wszystko odbyło się sprawnie i bezproblemowo. Polecam!",
-            date: "02.01.2024"
-        }
-    ]
 
     return (
         <section className={`${styles[theme]}`} id={"opinie"}>
@@ -36,34 +22,28 @@ export default function Review() {
                     <h2>Co mówią nasi klienci?</h2>
                 </div>
                 <div className={"flex justify-between gap-4 max-lg:flex-col"}>
-                    {
-                        data.map((item, index) => {
-                            return (
-                                <ReviewCard key={index} data={item}/>
-                            )
-                        })
-                    }
+                    {reviews.map((item) => (
+                        <ReviewCard key={item.user + item.date} data={item}/>
+                    ))}
                 </div>
-
             </div>
         </section>
     )
 }
 
 
-function ReviewCard({...props}) {
-
-    const {user, city, text, date} = props.data;
+function ReviewCard({data}) {
+    const {user, city, text, date} = data;
 
     return (
-        <div className={"bg w-full bg-white rounded-2xl px-[40px] py-[50px] flex flex-col"}>
-
-            <p className={"small mb-[30px] flex-grow"}>{text}</p>
-            <div>
-                <h4 className={"font-[600]"}>{user}, {city}</h4>
-                <span className={"text-[13px] text-[#878787]"}>{date}</span>
-            </div>
-
-        </div>
+        <figure className={"w-full bg-white rounded-2xl px-[40px] py-[50px] flex flex-col"}>
+            <blockquote className={"flex-grow"}>
+                <p className={"small mb-[30px]"}>{text}</p>
+            </blockquote>
+            <figcaption>
+                <span className={"block font-[600]"}>{user}, {city}</span>
+                <time dateTime={date} className={"text-[13px] text-[#878787]"}>{formatDate(date)}</time>
+            </figcaption>
+        </figure>
     )
 }

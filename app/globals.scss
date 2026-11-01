@@ -20,18 +20,64 @@
   .menu-social-changeColor {
     @apply aspect-square border-2 border-white rounded-full grid place-items-center w-[40px] h-[40px];
   }
+
+  // Szkielety ładowania (jasne i ciemne tło)
+  .skeleton {
+    @apply relative overflow-hidden bg-[#EBEBEB];
+  }
+  .skeleton-dark {
+    @apply relative overflow-hidden bg-[#1c1c1c];
+  }
+  .skeleton::after,
+  .skeleton-dark::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    animation: skeleton-shimmer 1.4s infinite;
+  }
+  .skeleton-dark::after {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+  }
+}
+
+@keyframes skeleton-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 
-body{
-  height: 100%;
-  width: 100vw;
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100%;
+  width: 100%;
   overflow-x: hidden !important;
 }
 
-*{
-  scroll-behavior: smooth;
+// Kotwice (#o-nas, #kontakt…) nie chowają się pod przypiętym menu
+[id] {
+  scroll-margin-top: 96px;
+}
 
+:focus-visible {
+  outline: 2px solid #FFC326;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 h1{
@@ -73,4 +119,3 @@ p.small{
   grid-column: 1/1;
   grid-row: 1/1;
 }
-

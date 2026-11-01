@@ -1,10 +1,8 @@
-import {Button} from "@/components";
+import Button from "@/components/common/Button";
 import ContactImage from "@/assets/images/contact-image.png"
 import Image from "next/image";
 
 export default function Contact() {
-
-
     return (
         <section
             id={"kontakt"}
@@ -19,18 +17,18 @@ export default function Contact() {
                     dyspozycji 24/7.
                 </p>
                 <div className={"flex flex-col gap-3 items-start mt-[42px]"}>
-
                     <Button text={"Napisz wiadomość email"} type={"email"}/>
                     <Button text={"Zadzwoń teraz"} type={"phone"}/>
-
                 </div>
-
             </div>
 
             <div className={"flex-1"}>
-                <Image src={ContactImage} alt={"contact"} width="0" height="0" sizes="100vw" className={"w-full h-[430px] object-cover rounded-2xl max-lg:h-[300px] max-md:h-auto"}/>
+                <Image src={ContactImage}
+                       alt={"Laweta pomocy drogowej Śliwiński gotowa do wyjazdu"}
+                       placeholder="blur"
+                       sizes="(max-width: 1024px) 100vw, 640px"
+                       className={"w-full h-[430px] object-cover rounded-2xl max-lg:h-[300px] max-md:h-auto"}/>
             </div>
-
         </section>
     )
 }

@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(echo \"started, pid=$!\")",
+      "Bash(git -C /c/Users/Komputer/Documents/vsc/pomoc-drogowa branch --show-current)",
+      "Bash(git -C /c/Users/Komputer/Documents/vsc/pomoc-drogowa status --short)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git -C /c/Users/Komputer/Documents/vsc/pomoc-drogowa merge --no-ff claude/mystifying-johnson-676b9c -m \"Add /redesign mockup proposal\")",
+      "Bash(git -C /c/Users/Komputer/Documents/vsc/pomoc-drogowa merge --no-ff claude/mystifying-johnson-676b9c -m \"Update contact email\")",
+      "Bash(git -C /c/Users/Komputer/Documents/vsc/pomoc-drogowa push origin main)"
+    ]
+  }
+}

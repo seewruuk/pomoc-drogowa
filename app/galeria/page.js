@@ -1,26 +1,27 @@
 import GalleryLayout from "@/components/&gallery/GalleryLayout";
 import {getGallery} from "@/sanity/lib/sanity-utils";
+import {buildMetadata} from "@/lib/metadata";
 
-export default async function Page() {
-    return (
-        <GalleryLayout/>
-    )
-}
+export const revalidate = 600;
 
 export async function generateMetadata() {
     const item = await getGallery();
 
-    if(!item) return {
-        title: "Nie znaleziono strony",
-        description: "Strona której szukasz, prawdopodobnie nie istnieje",
-    }
-
-    return {
-        title: item.seo && item.seo.metaTitle ? item.seo.metaTitle : item.title,
-        description: item.seo && item.seo.metaDescription ? item.seo.metaDescription : "",
-        keywords: item.seo && item.seo.metaKeywords ? item.seo.metaKeywords.map((item) => item).join(", ") : "",
-        alternates: {
-            canonical: item.seo && item.seo.canonicalTag ? item.seo.canonicalTag : ""
+    return buildMetadata({
+        seo: {
+            title: item?.seo?.metaTitle,
+            description: item?.seo?.metaDescription,
+            keywords: item?.seo?.metaKeywords,
+            canonical: item?.seo?.canonicalTag,
         },
-    }
+        fallbackTitle: item?.title || "Galeria zdjęć",
+        fallbackDescription: "Zobacz zdjęcia naszej floty, realizacji holowania i transportu maszyn w Trójmieście.",
+        path: "/galeria/",
+        image: item?.image,
+    });
+}
+
+export default async function Page() {
+    const data = await getGallery();
+    return <GalleryLayout data={data}/>;
 }

@@ -1,31 +1,15 @@
 "use client"
-import {useEffect, useState} from "react";
-import {Button, Label} from "@/components";
-import Image from "next/image";
-import {getAbout} from "@/sanity/lib/sanity-utils";
+import {useState} from "react";
+import Button from "@/components/common/Button";
+import Label from "@/components/common/Label";
+import SmartImage from "@/components/common/SmartImage";
 
+// Dane przychodzą z serwera (app/page.jsx) – brak ładowania po stronie przeglądarki
+export default function About({data}) {
+    const images = (data?.images ?? []).filter((i) => i?.image);
+    const [selectedImage, setSelectedImage] = useState(0);
 
-async function getData() {
-    const data = await getAbout();
-    return data[0];
-}
-
-export default function About() {
-
-    const [data, setData] = useState(null)
-
-    useEffect(() => {
-        getData().then(data => {
-            setData(data)
-        })
-    }, []);
-
-    const images = data && data.images
-
-
-    const [selectedImage, setSelectedImage] = useState(0)
-
-    if(data === null) return <p className={"text-center py-10 animate-pulse"}>Pobieranie danych...</p>
+    if (!data) return null;
 
     return (
         <section className={"max-w-[1420px] mx-auto px-12 py-[150px] max-md:px-6"} id={"o-nas"}>
@@ -35,9 +19,7 @@ export default function About() {
                     <Label text={"Poznaj nas"}/>
                     <h2 className={"text-[36px] font-[700] mb-[42px]"}>{data.header}</h2>
                     <p className={"leading-[32px] mb-[32px]"}>
-                        {
-                            data.description
-                        }
+                        {data.description}
                     </p>
                     <Button text={"Skontaktuj się"}
                             target={"#kontakt"}
@@ -45,18 +27,38 @@ export default function About() {
                     />
                 </div>
 
-                <div className={"w-[50%] flex flex-col max-lg:w-[100%]"}>
-                    <Image width="0" height="0" sizes="100vw"  src={images[selectedImage].image} alt={images[selectedImage].imageAlt}
-                         className={"h-[400px] aspect-square object-cover rounded-2xl w-full"}/>
-                    <div className={"flex gap-[6px] justify-center mt-[25px]"}>
-                        {
-                            images.map((image, index) => (
-                                <div key={image + index} onClick={() => setSelectedImage(index)}
-                                     className={`transition-all aspect-square cursor-pointer h-[13px] rounded-full bg-[#959595] ${selectedImage === index ? 'opacity-100' : "opacity-40"}`}/>
-                            ))
-                        }
+                {images.length > 0 && (
+                    <div className={"w-[50%] flex flex-col max-lg:w-[100%]"}>
+                        <div className={"relative h-[400px] w-full rounded-2xl overflow-hidden bg-[#EBEBEB]"}>
+                            {images.map((img, index) => (
+                                <div key={index}
+                                     className={`absolute inset-0 transition-opacity duration-500 ${selectedImage === index ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+                                     aria-hidden={selectedImage !== index}>
+                                    <SmartImage
+                                        src={img.image}
+                                        lqip={img.lqip}
+                                        alt={img.imageAlt || data.header || "Pomoc drogowa Śliwiński"}
+                                        fill
+                                        sizes="(max-width: 1024px) 100vw, 660px"
+                                        className={"object-cover"}
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                        {images.length > 1 && (
+                            <div className={"flex gap-[6px] justify-center mt-[25px]"}>
+                                {images.map((_, index) => (
+                                    <button key={index}
+                                            type="button"
+                                            onClick={() => setSelectedImage(index)}
+                                            aria-label={`Pokaż zdjęcie ${index + 1}`}
+                                            aria-pressed={selectedImage === index}
+                                            className={`transition-all aspect-square cursor-pointer h-[13px] rounded-full bg-[#959595] ${selectedImage === index ? 'opacity-100' : "opacity-40 hover:opacity-70"}`}/>
+                                ))}
+                            </div>
+                        )}
                     </div>
-                </div>
+                )}
 
             </div>
         </section>

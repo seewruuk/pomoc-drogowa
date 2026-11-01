@@ -1,14 +1,14 @@
+import {siteUrl} from "@/lib/site";
+
 export default function robots() {
-
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-
-
-    return{
-        rules : {
+    return {
+        rules: {
             userAgent: '*',
             allow: '/',
-            disallow: '/private/',
+            // Panel CMS, makieta redesignu i API nie powinny trafiać do wyszukiwarki
+            disallow: ['/sanity/', '/redesign/', '/api/'],
         },
-        sitemap: `${baseUrl}/sitemap.xml`
+        sitemap: `${siteUrl}/sitemap.xml`,
+        host: siteUrl,
     }
 }

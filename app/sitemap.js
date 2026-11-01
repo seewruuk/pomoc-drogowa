@@ -1,35 +1,21 @@
-import {getAllArticles, getOffers} from "@/sanity/lib/sanity-utils";
+import {getAllArticles, getGallery, getOffers} from "@/sanity/lib/sanity-utils";
+import {siteUrl} from "@/lib/site";
+
+export const revalidate = 3600;
 
 export default async function sitemap() {
+    const [offers, articles, gallery] = await Promise.all([getOffers(), getAllArticles(), getGallery()]);
 
-
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-
-    const offers = await getOffers();
-    const articles = await getAllArticles();
-
-    const offerUrl = offers.map((item) => {
-        return {
-            url: `${baseUrl}/uslugi/${item.slug}`,
-            lastModified: `${item._createdAt}`
-        }
-    })
-
-    const articleUrl = articles.map((item) => {
-        return {
-            url: `${baseUrl}/aktualnosci/${item.slug}`,
-            lastModified: `${item._createdAt}`
-        }
-    })
+    const toEntry = (path, item, priority) => ({
+        url: `${siteUrl}${path}`,
+        lastModified: new Date(item?._updatedAt || item?._createdAt || Date.now()),
+        priority,
+    });
 
     return [
-        {
-            url: baseUrl,
-            lastModified: new Date()
-        },
-        ...offerUrl,
-        ...articleUrl
-    ]
-
-
+        {url: `${siteUrl}/`, lastModified: new Date(), changeFrequency: "weekly", priority: 1},
+        ...offers.map((item) => toEntry(`/uslugi/${item.slug}/`, item, 0.9)),
+        toEntry("/galeria/", gallery, 0.6),
+        ...articles.map((item) => toEntry(`/aktualnosci/${item.slug}/`, item, 0.5)),
+    ];
 }
